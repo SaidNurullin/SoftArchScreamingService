@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672" # RabbitMQ Management UI
+      - "5672:5672" # RabbitMQ Messaging Port
+
+  python-app:
+    build: .
+    depends_on:
+      - rabbitmq
